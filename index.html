@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPro Service — Service auto premium, București</title>
+    <meta name="description" content="AutoPro Service — service auto premium. Diagnostică, mecanică, electrică. Profesionalism garantat.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0E13'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23E85D3A' stroke-width='2'/%3E%3Cpolygon points='16,6 18.5,13.5 26,16 18.5,18.5 16,26 13.5,18.5 6,16 13.5,13.5' fill='%23E85D3A'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0E13;
+            --bg2: #11161D;
+            --bg3: #181D26;
+            --surface: #151A23;
+            --accent: #E85D3A;
+            --accent-hover: #F0704F;
+            --accent-glow: rgba(232, 93, 58, 0.18);
+            --gold: #C4A265;
+            --gold-dim: #8B7444;
+            --blue: #4A90D9;
+            --text: #E8E6E1;
+            --text2: #9A9CA3;
+            --text3: #636670;
+            --border: rgba(255, 255, 255, 0.07);
+            --border2: rgba(255, 255, 255, 0.12);
+            --f-heading: 'Syne', sans-serif;
+            --f-body: 'Inter', sans-serif;
+            --f-mono: 'JetBrains Mono', monospace;
+            --fs-hero: clamp(3.2rem, 8vw, 6.5rem);
+            --fs-xxl: clamp(2rem, 5vw, 3.8rem);
+            --fs-xl: clamp(1.5rem, 3.5vw, 2.4rem);
+            --fs-lg: 1.25rem;
+            --fs-md: 1.0625rem;
+            --fs-base: 0.9375rem;
+            --fs-sm: 0.8125rem;
+            --fs-xs: 0.7rem;
+            --sp-1: 0.5rem;
+            --sp-2: 1rem;
+            --sp-3: 1.75rem;
+            --sp-4: 2.75rem;
+            --sp-5: 4.5rem;
+            --sp-6: 7rem;
+            --radius: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --ease: cubic-bezier(.22, .7, .24, 1);
+            --maxw: 1200px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text2);
+            font-family: var(--f-body);
+            font-size: var(--fs-base);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        ul { margin: 0; padding: 0; list-style: none; }
+        h1, h2, h3, h4, p, figure { margin: 0; }
+        button { font: inherit; cursor: pointer; }
+        input, textarea { font: inherit; }
+
+        body::before {
+            content: "";
+            position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: .03;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        }
+        .skip-link {
+            position: absolute; left: -999px; top: auto;
+            background: var(--accent); color: #fff; padding: .75rem 1.25rem;
+            z-index: 2000; font-family: var(--f-mono); font-size: var(--fs-xs);
+            text-transform: uppercase; letter-spacing: .08em; border-radius: 4px;
+        }
+        .skip-link:focus { left: var(--sp-2); top: var(--sp-2); }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+        .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--sp-3); }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: .6rem;
+            font-family: var(--f-mono); font-size: var(--fs-xs); text-transform: uppercase;
+            letter-spacing: .16em; color: var(--accent); font-weight: 500;
+        }
+        .eyebrow .dot {
+            width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+            box-shadow: 0 0 8px var(--accent-glow);
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+        @keyframes dotPulse {
+            0%, 100% { box-shadow: 0 0 6px var(--accent-glow); }
+            50% { box-shadow: 0 0 18px var(--accent), 0 0 30px var(--accent-glow); }
+        }
+        h1, h2, h3 { font-family: var(--f-heading); font-weight: 700; color: var(--text); letter-spacing: -.01em; line-height: 1.08; }
+        .section-head { max-width: 600px; margin-bottom: var(--sp-4); }
+        .section-head h2 { font-size: var(--fs-xxl); margin-top: .5rem; }
+        .section-head p { margin-top: 1rem; font-size: var(--fs-md); color: var(--text2); max-width: 50ch; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: .6rem;
+            padding: .9rem 1.8rem; font-family: var(--f-mono); font-size: var(--fs-xs);
+            text-transform: uppercase; letter-spacing: .1em; border-radius: 6px;
+            border: 1px solid transparent; transition: all .35s var(--ease); font-weight: 500;
+        }
+        .btn-solid { background: var(--accent); color: #fff; }
+        .btn-solid:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -10px rgba(232,93,58,.35); }
+        .btn-outline { border-color: var(--border2); color: var(--text); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 20px -8px var(--accent-glow); }
+
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+            padding: 1.2rem 0; transition: padding .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+            border-bottom: 1px solid transparent;
+        }
+        .nav.is-scrolled { padding: .7rem 0; background: rgba(11,14,19,.88); backdrop-filter: blur(14px); border-color: var(--border); }
+        .nav .container { display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: .55rem; font-family: var(--f-heading); font-weight: 800; font-size: 1.25rem; color: var(--text); }
+        .brand svg { width: 28px; height: 28px; }
+        .nav-links { display: flex; align-items: center; gap: var(--sp-3); }
+        .nav-links a:not(.btn) {
+            font-family: var(--f-mono); font-size: var(--fs-xs); text-transform: uppercase;
+            letter-spacing: .1em; color: var(--text2); position: relative; padding-bottom: 4px;
+            transition: color .3s;
+        }
+        .nav-links a:not(.btn):hover { color: var(--text); }
+        .nav-links a:not(.btn)::after {
+            content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1.5px;
+            background: var(--accent); transition: width .35s var(--ease); border-radius: 1px;
+        }
+        .nav-links a:not(.btn):hover::after, .nav-links a.is-active::after { width: 100%; }
+        .nav-links a.is-active { color: var(--text); }
+
+        .nav-toggle { display: none; background: none; border: 0; padding: .4rem; }
+        .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+            content: ""; display: block; width: 22px; height: 2px; background: var(--text);
+            transition: transform .3s var(--ease), opacity .3s var(--ease); position: relative; border-radius: 1px;
+        }
+        .nav-toggle span::before { position: absolute; top: -7px; }
+        .nav-toggle span::after { position: absolute; top: 7px; }
+        .nav.is-open .nav-toggle span { background: transparent; }
+        .nav.is-open .nav-toggle span::before { transform: translateY(7px) rotate(45deg); background: var(--accent); }
+        .nav.is-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45deg); background: var(--accent); }
+
+        @media (max-width: 860px) {
+            .nav-toggle { display: block; }
+            .nav-links {
+                position: fixed; inset: 0 0 0 auto; width: min(78vw,320px); height: 100vh;
+                background: var(--bg2); flex-direction: column; align-items: flex-start;
+                justify-content: center; gap: var(--sp-3); padding: 0 var(--sp-4);
+                transform: translateX(100%); transition: transform .45s var(--ease);
+                border-left: 1px solid var(--border);
+            }
+            .nav.is-open .nav-links { transform: translateX(0); }
+            .nav-links a:not(.btn) { font-size: var(--fs-base); }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100svh; display: flex; align-items: center; position: relative;
+            padding: 8rem 0 5rem;
+            background:
+                radial-gradient(ellipse 55% 45% at 75% 15%, rgba(232,93,58,.14), transparent 55%),
+                radial-gradient(ellipse 40% 35% at 15% 80%, rgba(74,144,217,.08), transparent 55%),
+                var(--bg);
+            overflow: hidden;
+        }
+        .hero-bg-pattern {
+            position: absolute; inset: 0; pointer-events: none; opacity: .04;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,.5) 39px, rgba(255,255,255,.5) 40px),
+                repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,.5) 39px, rgba(255,255,255,.5) 40px);
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
+        }
+        .hero .container { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--sp-4); align-items: center; position: relative; z-index: 2; }
+        .hero-copy .eyebrow { margin-bottom: 1.4rem; }
+        .hero-title {
+            font-size: var(--fs-hero); line-height: .9; color: var(--text);
+            margin: 0 0 1.4rem; opacity: 0; transform: translateY(28px);
+            animation: fadeUp .9s var(--ease) .15s forwards;
+        }
+        .hero-title span { color: var(--accent); }
+        .hero-sub {
+            font-size: var(--fs-lg); max-width: 40ch; color: var(--text2);
+            opacity: 0; transform: translateY(20px);
+            animation: fadeUp .9s var(--ease) .4s forwards;
+        }
+        .hero-actions {
+            display: flex; gap: 1rem; margin-top: var(--sp-3); flex-wrap: wrap;
+            opacity: 0; transform: translateY(20px);
+            animation: fadeUp .9s var(--ease) .6s forwards;
+        }
+        .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; }
+        .hero-car { width: min(100%, 380px); opacity: 0; transform: scale(.86); animation: cupIn 1.1s var(--ease) .3s forwards; }
+        @keyframes fadeUp { to { opacity: 1; transform: none; } }
+        @keyframes cupIn { to { opacity: 1; transform: scale(1); } }
+        .hero-scroll {
+            position: absolute; left: 50%; bottom: 2rem; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: .5rem;
+            font-family: var(--f-mono); font-size: .6rem; letter-spacing: .2em;
+            text-transform: uppercase; color: var(--text3); opacity: 0;
+            animation: fadeUp .8s var(--ease) 1.4s forwards; z-index: 2;
+        }
+        .hero-scroll svg { width: 14px; height: 20px; animation: bounce 2s ease-in-out infinite; }
+        @keyframes bounce { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(7px); } }
+
+        @media (max-width:900px) {
+            .hero .container { grid-template-columns: 1fr; text-align: left; }
+            .hero-visual { order: -1; margin-bottom: 1rem; }
+            .hero-car { width: min(70%, 260px); }
+        }
+
+        .section { padding: var(--sp-6) 0; position: relative; }
+        .section--alt { background: var(--bg2); }
+
+        /* Stats */
+        .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--sp-3); text-align: center; }
+        .stat-item .stat-num { font-family: var(--f-heading); font-size: var(--fs-xxl); font-weight: 800; color: var(--text); line-height: 1; }
+        .stat-item .stat-num span { color: var(--accent); }
+        .stat-item .stat-label { font-family: var(--f-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-top: .5rem; }
+        @media (max-width:700px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
+
+        /* CTA Servicii */
+        .cta-servicii {
+            background: radial-gradient(circle at 30% 20%, rgba(232,93,58,.08), transparent 50%), var(--bg2);
+            text-align: center; padding: var(--sp-6) 0;
+        }
+        .cta-servicii h2 { font-size: var(--fs-xxl); }
+        .cta-servicii p { margin-top: 1rem; max-width: 45ch; margin-left: auto; margin-right: auto; color: var(--text2); font-size: var(--fs-md); }
+
+        /* Despre */
+        .about-grid { display: grid; grid-template-columns: 1fr .9fr; gap: var(--sp-5); align-items: center; }
+        .about-copy p { font-size: var(--fs-md); color: var(--text2); margin-bottom: 1rem; max-width: 50ch; }
+        .about-visual {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+            padding: var(--sp-3); display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 300px; text-align: center; position: relative; overflow: hidden;
+        }
+        .about-visual svg { width: 80px; height: 80px; opacity: .7; stroke: var(--accent); stroke-width: 1.4; fill: none; }
+        .about-visual .photo-label { margin-top: 1rem; font-family: var(--f-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .1em; color: var(--text3); }
+        .about-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); }
+        @media (max-width:860px) { .about-grid { grid-template-columns: 1fr; } }
+
+        /* Contact */
+        .contact-grid { display: grid; grid-template-columns: .9fr 1fr; gap: var(--sp-5); }
+        .info-list { display: flex; flex-direction: column; gap: var(--sp-3); margin-top: var(--sp-3); }
+        .info-item { display: flex; gap: 1rem; align-items: flex-start; }
+        .info-item svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: .2rem; stroke: var(--accent); fill: none; stroke-width: 1.6; }
+        .info-item h4 { font-family: var(--f-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin: 0 0 .3rem; font-weight: 400; }
+        .info-item p { color: var(--text); font-size: var(--fs-md); }
+        .info-item a { color: var(--text); transition: color .2s; }
+        .info-item a:hover { color: var(--accent); text-decoration: underline; }
+        .social-row { display: flex; gap: .9rem; margin-top: var(--sp-3); }
+        .social-row a {
+            width: 38px; height: 38px; border: 1px solid var(--border2); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color .3s, transform .3s;
+        }
+        .social-row a:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .social-row svg { width: 16px; height: 16px; stroke: var(--text2); fill: none; stroke-width: 1.6; }
+
+        .map-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+            overflow: hidden; height: 100%; min-height: 380px;
+        }
+        .map-card iframe { width: 100%; height: 100%; min-height: 380px; border: 0; filter: grayscale(0.2) contrast(0.9) brightness(0.85); }
+
+        @media (max-width:860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+        .footer {
+            padding: var(--sp-4) 0 var(--sp-3); background: var(--bg); border-top: 1px solid var(--border);
+        }
+        .footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer small { font-family: var(--f-mono); font-size: var(--fs-xs); color: var(--text3); letter-spacing: .05em; }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+        .reveal.in-view { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+            .reveal, .hero-title, .hero-sub, .hero-actions, .hero-car, .hero-scroll { opacity: 1; transform: none; animation: none; }
+        }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#continut">Sari la conținut</a>
+
+<nav class="nav" id="nav">
+    <div class="container">
+        <a href="index.html" class="brand">
+            <svg viewBox="0 0 28 28" aria-hidden="true">
+                <circle cx="14" cy="14" r="11" fill="none" stroke="#E85D3A" stroke-width="1.8"/>
+                <polygon points="14,5 16.5,12 23,14 16.5,16 14,23 11.5,16 5,14 11.5,12" fill="#E85D3A"/>
+            </svg>
+            AutoPro
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="is-active">Acasă</a></li>
+            <li><a href="servicii.html">Servicii</a></li>
+            <li><a href="#despre">Despre</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="btn btn-outline">Programare</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Deschide meniul de navigare" aria-expanded="false">
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<main id="continut">
+    <header class="hero" id="acasa">
+        <div class="hero-bg-pattern"></div>
+        <div class="container">
+            <div class="hero-copy">
+                <span class="eyebrow"><span class="dot"></span>Service auto premium · București</span>
+                <h1 class="hero-title">Mașina ta<br>în <span>cele mai bune</span> mâini</h1>
+                <p class="hero-sub">Diagnostică computerizată, reparații complete și întreținere preventivă — totul sub același acoperiș. De peste 12 ani, suntem alegerea șoferilor care nu fac compromisuri.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-solid">Fă o programare</a>
+                    <a href="servicii.html" class="btn btn-outline">Vezi serviciile</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <svg class="hero-car" viewBox="0 0 360 260" aria-hidden="true">
+                    <!-- Siluetă mașină modernă + linii tehnice -->
+                    <defs>
+                        <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#E85D3A" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#C44A2D" stop-opacity="0.9"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M40,180 L50,120 Q55,100 85,95 L140,90 Q155,88 165,88 L210,88 Q220,88 230,90 L280,95 Q310,100 315,120 L325,180 Z" fill="none" stroke="url(#bodyGrad)" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M45,180 L60,130 Q65,115 85,110 L145,105 L220,105 L280,110 Q300,115 305,130 L320,180" fill="none" stroke="#9A9CA3" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.6"/>
+                    <!-- Geamuri -->
+                    <path d="M105,95 L130,65 Q140,55 155,55 L210,55 Q225,55 235,65 L260,95" fill="none" stroke="#636670" stroke-width="2" stroke-linejoin="round"/>
+                    <!-- Roți -->
+                    <circle cx="115" cy="180" r="22" fill="none" stroke="#C4A265" stroke-width="2.5"/>
+                    <circle cx="115" cy="180" r="10" fill="none" stroke="#C4A265" stroke-width="2.5"/>
+                    <circle cx="250" cy="180" r="22" fill="none" stroke="#C4A265" stroke-width="2.5"/>
+                    <circle cx="250" cy="180" r="10" fill="none" stroke="#C4A265" stroke-width="2.5"/>
+                    <!-- Linii tehnice -->
+                    <line x1="80" y1="150" x2="100" y2="150" stroke="#4A90D9" stroke-width="1.5" opacity="0.5"/>
+                    <line x1="270" y1="150" x2="290" y2="150" stroke="#4A90D9" stroke-width="1.5" opacity="0.5"/>
+                    <circle cx="185" cy="120" r="3" fill="#4A90D9" opacity="0.7"/>
+                    <line x1="185" y1="123" x2="185" y2="140" stroke="#4A90D9" stroke-width="1" opacity="0.4"/>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <svg viewBox="0 0 14 20" aria-hidden="true"><path d="M2 2 L7 9 L12 2" fill="none" stroke="#636670" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Derulează
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="section section--alt" style="padding: var(--sp-5) 0;">
+        <div class="container">
+            <div class="stats-row reveal">
+                <div class="stat-item"><div class="stat-num"><span>12</span>+</div><div class="stat-label">Ani experiență</div></div>
+                <div class="stat-item"><div class="stat-num"><span>8</span>k+</div><div class="stat-label">Mașini reparate</div></div>
+                <div class="stat-item"><div class="stat-num"><span>4.9</span></div><div class="stat-label">Stele pe Google</div></div>
+                <div class="stat-item"><div class="stat-num"><span>24</span>h</div><div class="stat-label">Timp maxim de intervenție</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Servicii (in locul grilei de servicii) -->
+    <section class="cta-servicii" id="servicii-cta">
+        <div class="container reveal">
+            <span class="eyebrow"><span class="dot"></span>Cu ce ne ocupăm</span>
+            <h2>Vrei să știi exact ce putem face pentru mașina ta?</h2>
+            <p>De la revizii esențiale la reparații complexe de motor și diagnoză computerizată — lista completă te așteaptă.</p>
+            <a href="servicii.html" class="btn btn-solid" style="margin-top:2rem;">Vezi toate serviciile</a>
+        </div>
+    </section>
+
+    <!-- DESPRE -->
+    <section class="section" id="despre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-copy reveal">
+                    <span class="eyebrow"><span class="dot"></span>Despre AutoPro</span>
+                    <h2 style="font-size:var(--fs-xxl);margin-top:.6rem;">Pasiune pentru precizie</h2>
+                    <p style="margin-top:1.4rem;">Am pornit acum 12 ani dintr-un garaj mic, cu o singură convingere: fiecare mașină care iese pe poarta noastră trebuie să fie în stare impecabilă. Astăzi, AutoPro înseamnă 8 lifturi, echipamente de diagnoză de ultimă generație și o echipă de 15 mecanici certificați.</p>
+                    <p>Nu promitem minuni — promitem muncă cinstită, prețuri corecte și o mașină care merge ca nouă. De fiecare dată.</p>
+                    <a href="#contact" class="btn btn-solid" style="margin-top:1rem;">Programează-te acum</a>
+                </div>
+                <div class="about-visual reveal">
+                    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="14" width="40" height="24" rx="3"/>
+                        <path d="M14 38v4M34 38v4"/>
+                        <circle cx="13" cy="13" r="5"/><circle cx="35" cy="13" r="5"/>
+                        <line x1="8" y1="13" x2="5" y2="13"/><line x1="40" y1="13" x2="43" y2="13"/>
+                        <rect x="16" y="4" width="16" height="10" rx="2"/>
+                        <circle cx="24" cy="26" r="4"/><circle cx="24" cy="26" r="1.5" fill="currentColor"/>
+                    </svg>
+                    <span class="photo-label">Fotografie – service-ul nostru</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--alt" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <span class="eyebrow"><span class="dot"></span>Contact</span>
+                    <h2 style="font-size:var(--fs-xxl);margin-top:.6rem;">Hai la o discuție</h2>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7.4-7-12a7 7 0 1 1 14 0c0 4.6-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>
+                            <div><h4>Adresă</h4><p>Șos. Pipera nr. 48, Sector 2, București</p></div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+                            <div><h4>Program</h4><p>Luni – Vineri: 08:00 – 18:00<br>Sâmbătă: 09:00 – 14:00</p></div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+                            <div><h4>Telefon & Email</h4><p><a href="tel:+40721234567">+40 721 234 567</a><br><a href="mailto:contact@autopro-service.ro">contact@autopro-service.ro</a></p></div>
+                        </div>
+                    </div>
+                    <div class="social-row">
+                        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+                        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 9h2.5V5.5H14c-2.2 0-3.5 1.4-3.5 3.6V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.3c0-.6.2-1 .5-1z"/></svg></a>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="map-card">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.59858325811!2d26.0963!3d44.4379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f8a5c5c5c5c5%3A0x5c5c5c5c5c5c5c5c!2sBucure%C8%99ti!5e0!3m2!1sro!2sro!4v1685000000000"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Locație AutoPro Service – București">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <a href="index.html" class="brand" style="font-size:1.05rem;">
+            <svg viewBox="0 0 28 28" aria-hidden="true" width="22" height="22">
+                <circle cx="14" cy="14" r="11" fill="none" stroke="#E85D3A" stroke-width="1.8"/>
+                <polygon points="14,5 16.5,12 23,14 16.5,16 14,23 11.5,16 5,14 11.5,12" fill="#E85D3A"/>
+            </svg>
+            AutoPro
+        </a>
+        <small>© 2026 AutoPro Service · București. Prototip de site demonstrativ.</small>
+    </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var nav = document.querySelector('.nav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 40) nav.classList.add('is-scrolled');
+    else nav.classList.remove('is-scrolled');
+  }, {passive:true});
+
+  var toggle = document.querySelector('.nav-toggle');
+  toggle.addEventListener('click', function(){
+    nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', nav.classList.contains('is-open'));
+  });
+  document.querySelectorAll('.nav-links a').forEach(l=> l.addEventListener('click', ()=> nav.classList.remove('is-open')));
+
+  // Active link scroll spy (only for hash links)
+  var sections = document.querySelectorAll('section[id], header[id]');
+  var links = document.querySelectorAll('.nav-links a[href^="#"]');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(e=> {
+      if(e.isIntersecting){
+        links.forEach(link=> link.classList.remove('is-active'));
+        var active = document.querySelector('.nav-links a[href="#'+ e.target.id +'"]');
+        if(active) active.classList.add('is-active');
+      }
+    });
+  }, {rootMargin: '-40% 0px -55% 0px'});
+  sections.forEach(s=> observer.observe(s));
+
+  // Reveal on scroll
+  document.querySelectorAll('.reveal').forEach(el=> {
+    var io = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ el.classList.add('in-view'); io.unobserve(el); }
+    }, {threshold:0.12});
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
